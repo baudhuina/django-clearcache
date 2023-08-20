@@ -31,7 +31,7 @@ jobs:
           poetry install
       - name: Test with tox
         run: |
-          poetry run tox -e 38support
+          poetry run tox -e 'django{22,30,31,32,40,41,42}'
 
   test_on_python37:
     # On python 3.7, Django 4.2 is not supported.
@@ -53,4 +53,4 @@ jobs:
           poetry install
       - name: Test with tox
         run: |
-          poetry run tox -e 37support
+          poetry run tox -e 'django{22,30,31,32,40,41}'

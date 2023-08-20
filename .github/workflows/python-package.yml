@@ -11,12 +11,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  test_from_python38:
+  test_from_py38:
     # On python 3.8 and higher, all our Django versions are supported.
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11' ]
+        python-version: [ '3.8', '3.9', '3.10', '3.11' ]
 
     steps:
       - uses: actions/checkout@v2
@@ -33,7 +33,7 @@ jobs:
         run: |
           poetry run tox -e 'django{22,30,31,32,40,41,42}'
 
-  test_on_python37:
+  test_on_py37:
     # On python 3.7, Django 4.2 is not supported.
     runs-on: ubuntu-latest
     strategy:
@@ -53,4 +53,4 @@ jobs:
           poetry install
       - name: Test with tox
         run: |
-          poetry run tox -e 'django{22,30,31,32,40,41}'
+          poetry run tox -e 'django{22,30,31,32}'
